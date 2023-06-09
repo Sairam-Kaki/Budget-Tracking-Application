@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+:root {
+  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(piggy2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  text-align: center;
+  background-color: #1b5cbe;
+  padding: 20px 0;
+}
+
+.welcome{
+  font-weight: lighter;
+  font-style: italic;
+  color:aqua ;
+  position: absolute;
+  top: 12px;
+  left: 10px;
+}
+
+header h1 {
+  margin: 0;
+  color: white;
+}
+
+#logout-btn{
+  width:70px;
+  color: #a75b29;
+  font-weight: bold;
+  background-color: #f3f5f4;
+  padding: 5px;
+  border: 0;
+  border-radius: 5px;
+  position: absolute;
+  top: 25px;
+  right: 10px;
+}
+
+.container {
+  margin: 30px auto;
+  width: 350px;
+}
+
+.history {
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 5px;
+  margin: 40px 0 0;
+}
+
+h4 {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.inc-exp-container {
+  background-color: #fff;
+  box-shadow: var(--box-shadow);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.inc-exp-container > div {
+  flex: 1;
+  text-align: center;
+}
+
+.inc-exp-container > div:first-of-type {
+  border-right: 1px solid #dedede;
+}
+
+.money {
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin: 5px 0;
+}
+
+.money.plus {
+  color: #2ecc71;
+}
+
+.money.minus {
+  color: #c0392b;
+}
+
+#filter-btn {
+  position: relative;
+  bottom: 28px;
+  left: 300px;
+  background-color: #4c84af;
+  color: white;
+  border: 1px solid rgba(18, 16, 16, 0.3);
+}
+
+.filter-form{
+  margin: 0 auto 30px;
+  display: none;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.start-date, .end-date{
+  max-width: 100px;
+  padding: 0;
+  margin: 0;
+}
+
+.buttons{
+  width: 130px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+}
+
+#apply-btn{
+  background-color:#257456;
+  border: 0.5px solid black;
+}
+
+#reset-btn{
+  background-color:#9f642c;
+  border: 0.5px solid black;
+}
+
+
+.transaction {
+  box-shadow: var(--box-shadow);
+  border-radius: 5px;
+  padding: 1px;
+}
+
+h2{
+  text-align: center;
+}
+
+input[type='text'],
+input[type='number'],
+input[type='date'],
+#type,
+#category {
+  border: 1px solid #dedede;
+  border-radius: 2px;
+  display: block;
+  font-size: 16px;
+  padding: 10px;
+  margin-left: 1%;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  width: 98%;
+}
+
+label {
+  display: inline;
+  max-width: 50%;
+  padding: 5px;
+  margin: 15px 10px;
+}
+
+button, #category, #type, #type option{
+  cursor: pointer;
+}
+
+.btn {
+  background-color:cornflowerblue;
+  box-shadow: var(--box-shadow);
+  color: #fff;
+  border: 0;
+  display: block;
+  font-size: 16px;
+  margin: 15px 25%;
+  padding: 10px;
+  width: 50%;
+}
+
+.btn:focus,
+.delete-btn:focus {
+  outline: 0;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+.list li {
+  background-color: #fff;
+  box-shadow: var(--box-shadow);
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.list li.plus {
+  border-right: 5px solid #2ecc71;
+}
+
+.list li.minus {
+  border-right: 5px solid #c0392b;
+}
+
+.delete-btn {
+  cursor: pointer;
+  background-color: #e74c3c;
+  border: 0;
+  color: #fff;
+  font-size: 20px;
+  line-height: 20px;
+  padding: 2px 5px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-100%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.list li:hover .delete-btn {
+  opacity: 1;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+  padding: 7px 7px;
+  border-radius: 8px;
+  color: #fff;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  z-index: 9999;
+}
+
+.toast.add {
+  background-color: #41c263;
+}
+
+.toast.del {
+  background-color: #dd5144;
+}
+
+@media (min-width: 1200px) {
+  /* Media query for screens larger than 768px (desktop) */
+  .transaction.container {
+    position: fixed ;
+    top: 150px;
+    right: 100px;
+  }
+
+  body {
+    background-image: url(piggy-bank.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .first {
+    position: relative;
+    left: 50px;
+  }
+}

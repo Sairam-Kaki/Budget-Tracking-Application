@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <link rel="icon" type="png" href="{{url_for('static', filename='budget.png')}}">
+    <title>Expense Tracker - Login</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles.css')}}">
+</head>
+<body>
+    <h1 class="title">Budget Tracking Application</h1>
+    <div class="container">
+        <h1>Please Login</h1>
+        <form id="login-form" action="/" method="POST">
+            <input type="text" name="username" placeholder="Username/Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="{{url_for('register')}}">Register here</a></p>
+    </div>
+    <div class="toast">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        {% if category == 'credentialError' %}
+                            <div class="credentialError">
+                                <p class="errorTitle">Invalid Credentials!</p><br>
+                                <p class="dcrptn">Please provide correct credentials</p>
+                                <span class="progress"></span>
+                            </div>
+                        {% elif category == 'success' %}
+                            <div class="success">
+                                <p class="errorTitle">Registration Successful!</p>
+                                <p class="dcrptn">Successfully registered please login</p>
+                                <span class="progress"></span>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+    </div>
+</body>
+</html>

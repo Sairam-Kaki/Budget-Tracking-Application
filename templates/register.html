@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <link rel="icon" type="png" href="{{url_for('static', filename='budget.png')}}">
+    <title>Expense Tracker - Register</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles.css')}}">
+</head>
+<body>
+    <h1 class="title">Budget Tracking Application</h1>
+
+    <div class="container">
+        <h1>Register</h1>
+
+        <form id="register-form" action="/register" method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="confirm-password" placeholder="Confirm Password" required>
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="{{url_for('login')}}">Login</a></p>
+    </div>
+    <div class="toast">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    {% if category == 'mailError' %}
+                        <div class="emailError">
+                            <p class="errorTitle">Email already exists!</p>
+                            <p class="dcrptn">Try again with different Email</p>
+                            <span class="progress"></span>
+                        </div>
+                    {% elif category == 'passwordError' %}
+                        <div class="passwordError">
+                            <p class="errorTitle">Passwords did not match!</p>
+                            <p class="dcrptn">Password & confirm password must be same</p>
+                            <span class="progress"></span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
